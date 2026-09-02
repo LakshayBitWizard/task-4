@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Task Manager Dashboard — A sleek CRUD task management app with search, filter, and LocalStorage persistence.">
+  <title>Task Manager Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="dashboard-header">
+      <div class="logo-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 11l3 3L22 4"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+      </div>
+      <h1>Task Manager</h1>
+      <p class="subtitle">Organize your day, one task at a time</p>
+    </header>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar" aria-label="Task statistics">
+      <div class="stat-card total">
+        <div class="stat-number" id="statTotal">0</div>
+        <div class="stat-label">Total</div>
+      </div>
+      <div class="stat-card completed">
+        <div class="stat-number" id="statCompleted">0</div>
+        <div class="stat-label">Completed</div>
+      </div>
+      <div class="stat-card pending">
+        <div class="stat-number" id="statPending">0</div>
+        <div class="stat-label">Pending</div>
+      </div>
+    </section>
+
+    <!-- Add Task -->
+    <div class="glass-panel" id="addTaskPanel">
+      <form class="add-task-form" id="addTaskForm" autocomplete="off">
+        <input type="text" id="taskInput" placeholder="What needs to be done?" aria-label="Enter a new task" maxlength="200">
+        <button type="submit" class="btn-add" id="btnAddTask">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Add Task
+        </button>
+      </form>
+    </div>
+
+    <!-- Search & Filter -->
+    <div class="glass-panel" id="searchFilterPanel">
+      <div class="search-filter-bar">
+        <div class="search-wrapper">
+          <input type="text" id="searchBox" placeholder="Search tasks..." aria-label="Search tasks" maxlength="100">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+        <select class="filter-select" id="filterSelect" aria-label="Filter tasks">
+          <option value="all">All Tasks</option>
+          <option value="pending">Pending</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Task List -->
+    <section id="taskListSection">
+      <div class="task-list-header">
+        <h2>Your Tasks</h2>
+        <span class="task-count-badge" id="taskCountBadge">0 tasks</span>
+      </div>
+      <div class="task-list" id="taskList" role="list">
+        <!-- Tasks rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+      <p>Built with ❤️ for <a href="https://www.maincrafts.com" target="_blank" rel="noopener">MainCrafts</a> Internship — Task 4</p>
+    </footer>
+
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
