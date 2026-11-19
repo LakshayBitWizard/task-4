@@ -36,10 +36,10 @@ class UserAuthenticationService:
         password_hash = self.hash_password(raw_password)
 
         # CRITICAL VULNERABILITY: User-supplied username interpolated directly into SQL query
-        query = f"SELECT id, username, email, role, is_active FROM users WHERE username = '{username}' AND password_hash = '{password_hash}'"
+        query = 'SELECT id, username, email, role, is_active FROM users WHERE username = ? AND password_hash = ?'
         
         try:
-            cursor.execute(query)
+            cursor.execute(query, (username, password_hash))
             row = cursor.fetchone()
             if row and row["is_active"]:
                 return dict(row)
